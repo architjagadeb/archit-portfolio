@@ -1,4 +1,14 @@
 node_modules
 dist
 .env
+.env.*
+backend/.env
+backend/.env.*
+!.env.example
+!*.env.example
+backend/venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
 .DS_Store

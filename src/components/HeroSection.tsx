@@ -9,7 +9,11 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ]
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onOpenChat?: () => void
+}
+
+export default function HeroSection({ onOpenChat }: HeroSectionProps) {
   return (
     <section className="h-screen flex flex-col relative" style={{ overflowX: 'clip' }}>
       {/* Navbar */}
@@ -57,17 +61,20 @@ export default function HeroSection() {
       {/* Bottom bar */}
       <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 mt-auto relative z-20">
         <FadeIn delay={0.35} y={20}>
-          <p
-            className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
-            style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
-          >
-            a cs student building at the intersection of ai, research & content
-          </p>
+          <ContactButton
+            label="Resume"
+            href="https://drive.google.com/file/d/1PVPqeU-vE6hOlZVehzfcg7iMhbMP83q9/view"
+          />
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
-          <ContactButton />
+          <ContactButton
+            label="ASK ARCHIT"
+            onClick={onOpenChat}
+            ariaLabel="Open Ask Archit AI Chatbot"
+          />
         </FadeIn>
       </div>
     </section>
   )
 }
+
