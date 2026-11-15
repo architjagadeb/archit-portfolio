@@ -139,6 +139,7 @@ export default function AskArchitModal({ isOpen, onClose }: AskArchitModalProps)
 
           {/* Drawer Container */}
           <motion.div
+            id="ask-archit-modal"
             role="dialog"
             aria-modal="true"
             aria-label="Ask Archit Chatbot"
@@ -146,7 +147,7 @@ export default function AskArchitModal({ isOpen, onClose }: AskArchitModalProps)
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 260 }}
-            className="fixed top-0 right-0 bottom-0 z-50 w-full sm:w-[480px] md:w-[520px] max-w-full flex flex-col bg-[#0C0C0C] border-l border-white/10 shadow-2xl"
+            className="fixed top-0 right-0 bottom-0 z-50 w-full sm:w-[480px] md:w-[520px] max-w-full flex flex-col bg-[#0C0C0C] border-l border-white/10 shadow-2xl native-cursor"
             style={{ fontFamily: "'Kanit', sans-serif" }}
           >
             {/* Header */}
