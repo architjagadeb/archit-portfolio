@@ -1,6 +1,7 @@
 import os
 import logging
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import List, Optional
 
 from dotenv import load_dotenv
@@ -16,8 +17,8 @@ except ImportError:
     from rate_limiter import SimpleRateLimiter
     from resume import resume_cache
 
-# Load environment variables from .env if present
-load_dotenv()
+# Load backend/.env even if uvicorn is started from the repo root
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("ask_archit.api")

@@ -1,84 +1,93 @@
-import FadeIn from './FadeIn'
+import React from 'react'
+import { Code2, Cpu, Globe, Database, BarChart3, Wrench, LucideIcon } from 'lucide-react'
 
-const skills = [
+interface SkillCategory {
+  title: string
+  icon: LucideIcon
+  skills: string[]
+}
+
+const TOOLBOX_DATA: SkillCategory[] = [
   {
-    number: '01',
-    name: 'Python & Machine Learning',
-    description:
-      'Supervised and unsupervised learning workflows built with Python, Pandas, and NumPy, applied to real research and side-project data.',
+    title: 'Languages',
+    icon: Code2,
+    skills: ['Python', 'TypeScript', 'JavaScript', 'C', 'C++', 'HTML', 'CSS', 'SQL'],
   },
   {
-    number: '02',
-    name: 'Data Analysis & Visualization',
-    description:
-      'Turning raw survey and experiment data into clear visual stories using Plotly, Chart.js, and Dash dashboards.',
+    title: 'AI / ML & Agents',
+    icon: Cpu,
+    skills: ['Model Context Protocol (MCP)', 'FastMCP', 'Groq API', 'RAG Pipelines', 'scikit-learn', 'MediaPipe'],
   },
   {
-    number: '03',
-    name: 'Web Development',
-    description:
-      'Full-stack builds with Flask, Node.js, Express, and SQLAlchemy, shipped end to end from design through deployment.',
+    title: 'Frameworks & Web',
+    icon: Globe,
+    skills: ['React', 'Node.js', 'Express.js', 'FastAPI', 'Flask', 'Tailwind CSS'],
   },
   {
-    number: '04',
-    name: 'Cognitive & Computational Research',
-    description:
-      'Prototyping VR-based neurofeedback systems at IIT Ropar, bridging cognitive science principles with real-time game logic.',
+    title: 'Databases & ORM',
+    icon: Database,
+    skills: ['SQLite', 'SQLAlchemy', 'MongoDB', 'Firebase'],
   },
   {
-    number: '05',
-    name: 'Game Development & Interactive Systems',
-    description:
-      'Learning C# and Unity to build interactive and VR-based experiences, extending research prototypes into fully realized, testable systems.',
+    title: 'Data & Visualization',
+    icon: BarChart3,
+    skills: ['Pandas', 'NumPy', 'Plotly', 'Chart.js', 'Dash', 'Tableau', 'Matplotlib', 'Seaborn'],
+  },
+  {
+    title: 'Tools & DevOps',
+    icon: Wrench,
+    skills: ['Git', 'GitHub', 'Postman', 'VS Code', 'Render', 'Vite'],
   },
 ]
 
 export default function SkillsSection() {
   return (
-    <section
-      id="skills"
-      className="rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
-      style={{ background: '#FFFFFF' }}
-    >
-      <FadeIn>
-        <h2
-          className="font-black uppercase text-center mb-16 sm:mb-20 md:mb-28"
-          style={{ color: '#0C0C0C', fontSize: 'clamp(3rem, 12vw, 160px)' }}
-        >
-          Skills
-        </h2>
-      </FadeIn>
+    <section id="toolbox" className="py-20 sm:py-28 border-b border-border-theme">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        {/* Section Header */}
+        <div className="mb-12">
+          <p className="text-xs font-mono uppercase tracking-widest text-accent mb-2">
+            02 / Skills &amp; Stack
+          </p>
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink">
+            Toolbox
+          </h2>
+          <p className="mt-2 text-ink-muted text-sm sm:text-base font-normal">
+            Technologies and frameworks I build with on a regular basis.
+          </p>
+        </div>
 
-      <div className="max-w-5xl mx-auto">
-        {skills.map((skill, i) => (
-          <FadeIn key={skill.number} delay={i * 0.1}>
-            <div
-              className="flex items-center gap-6 sm:gap-10 py-8 sm:py-10 md:py-12"
-              style={{ borderBottom: '1px solid rgba(12, 12, 12, 0.15)' }}
-            >
-              <span
-                className="font-black shrink-0"
-                style={{ color: '#0C0C0C', fontSize: 'clamp(3rem, 10vw, 140px)' }}
+        {/* Grouped Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {TOOLBOX_DATA.map((group) => {
+            const Icon = group.icon
+            return (
+              <div
+                key={group.title}
+                className="p-6 rounded-2xl border border-border-theme bg-surface hover:border-accent/40 transition-colors shadow-sm flex flex-col justify-between"
               >
-                {skill.number}
-              </span>
-              <div className="flex flex-col gap-2">
-                <h3
-                  className="font-medium uppercase"
-                  style={{ color: '#0C0C0C', fontSize: 'clamp(1rem, 2.2vw, 2.1rem)' }}
-                >
-                  {skill.name}
-                </h3>
-                <p
-                  className="font-light leading-relaxed max-w-2xl"
-                  style={{ color: '#0C0C0C', opacity: 0.6, fontSize: 'clamp(0.85rem, 1.6vw, 1.25rem)' }}
-                >
-                  {skill.description}
-                </p>
+                <div>
+                  <div className="flex items-center gap-2.5 mb-4 text-ink font-semibold text-base">
+                    <div className="w-8 h-8 rounded-lg bg-canvas border border-border-theme flex items-center justify-center text-accent">
+                      <Icon size={16} />
+                    </div>
+                    <span>{group.title}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1 rounded-lg text-xs font-mono bg-canvas border border-border-theme text-ink-muted hover:text-ink hover:border-accent/30 transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </FadeIn>
-        ))}
+            )
+          })}
+        </div>
       </div>
     </section>
   )

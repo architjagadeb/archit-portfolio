@@ -10,7 +10,7 @@ interface ContactButtonProps {
 }
 
 export default function ContactButton({
-  href = 'https://drive.google.com/file/d/1PVPqeU-vE6hOlZVehzfcg7iMhbMP83q9/view',
+  href = 'https://drive.google.com/file/d/1hiaurPUV9jTuqtkydW433p6KH7dF9Jv4/view?usp=sharing',
   label = 'Resume',
   onClick,
   type = 'button',
